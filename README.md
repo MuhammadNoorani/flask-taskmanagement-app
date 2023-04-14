@@ -1,37 +1,55 @@
-# Flask-taskmanagement-app
+# Task Manager
 
-Flask Task Management is a web application built using the Flask framework that allows users to manage and track their tasks. Users can create, update, and delete tasks while keeping track of their progress and status.
+Task Manager is a simple web application built with Flask that allows users to manage their tasks. Users can add new tasks, list all existing tasks, and remove a task. This application is a great starting point for beginners who want to learn Flask or hackathon colleagues who want to quickly build a simple application.
 
-## Features
+## Installation
 
-- User-friendly interface for task management
-- Create, update, and delete tasks
+To use this application, first clone the repository to your local machine:
 
-## Deployment
+`git clone https://github.com/MuhammadNoorani/flask-taskmanagement-app.git`
 
-The application is packaged as a Docker image and can be deployed on any platform supporting containerized applications. In this example, we are using the Nappitive Playground to deploy the application.
+Then, navigate to the project directory and install the required dependencies:
 
-To deploy the Flask Task Management application, you can use the provided `flask-taskmanagement.app.yaml` file. This file contains the necessary configuration for deploying the application with a public endpoint using the Nappitive Playground.
+`cd <repository-name>`
+`pip install -r requirements.txt`
 
-Once the application is deployed, you can access it using the public endpoint provided by the Nappitive Playground. The application will be available on port 5000 at the root path.
 
 ## Usage
 
-1. Access the Flask Task Management application using the public endpoint provided by the Nappitive Playground.
-2. Create a new task by clicking the "Add Task" button and filling out the required information.
-3. Update or delete existing tasks by clicking the appropriate buttons in the task list.
+To run the application, execute the following command from the project directory:
 
-## Accessing the Web Application
+`python app.py`
 
-Once the Flask Task Management application is deployed on the Nappitive Playground, you can access it via a public endpoint created using the `napptive-ingress` trait. The application will be available on port 5000 at the root path.
 
-To find the public endpoint, you can check the Nappitive Playground user interface or use the Nappitive CLI to get the public URL. Once you have the URL, you can access the Flask Task Management application using a web browser or any other HTTP client.
+The application will start running at `http://localhost:5000`. Navigate to this URL in your web browser to use the application.
 
+## How to use the application
+
+The home page of the application (`http://localhost:5000/`) displays a form to add new tasks. You can enter a task and click on "Add another task" to add more tasks. Once you have entered all the tasks you want to add, click on "Submit tasks" to add them to the task list.
+
+The home page also displays a list of all the tasks that have been added so far. Each task in the list is numbered, and you can use the task number to remove a task. To remove a task, enter the task number in the "Enter task number" input field and click on "Remove task".
 
 ## Contributing
 
-To contribute to the Flask Task Management application, please fork the repository and submit a pull request with your proposed changes. Ensure that your changes are well-documented and tested.
+If you want to contribute to this project, please fork the repository and submit a pull request. Be sure to document your changes and add appropriate tests.
 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+## Docker
+
+This project can be deployed as a Docker container. A Dockerfile is included in the project. To build the Docker image, navigate to the project directory and run the following command:
+
+`docker build -t <image-name>`
+
+
+To run the Docker container, execute the following command:
+
+`docker run -p 5000:5000 <image-name>
+
+
+Replace `<image-name>` with the name you want to give to the Docker image. Once the container is running, you can access the application at `http://localhost:5000`.
+
+Note: Make sure you have Docker installed on your machine before building and running the Docker container.
+`
