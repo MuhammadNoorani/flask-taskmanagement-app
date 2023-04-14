@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task Manager</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Task Manager</h1>
+    <div class="container">
+      <div id="add_tasks">
+        <h2>Add tasks</h2>
+        <div id="tasks_list">
+          <input
+            type="text"
+            class="tasks-list-item"
+            placeholder="Enter a task"
+          />
+        </div>
+        <button id="add_task_input">Add another task</button>
+        <button id="submit_tasks">Submit tasks</button>
+        <div id="add_message"></div>
+      </div>
+      <div id="list_tasks">
+        <h2>Tasks</h2>
+        <ul id="tasks_list_display"></ul>
+      </div>
+      <div id="remove_task">
+        <h2>Remove task</h2>
+        <input type="text" id="task_number" placeholder="Enter task number" />
+        <button id="remove_task_btn">Remove task</button>
+        <div id="remove_message"></div>
+      </div>
+    </div>
+    <script>
+      document
+        .querySelector("#add_task_input")
+        .addEventListener("click", function () {
+          const newInput = document.createElement("input");
+          newInput.type = "text";
+          newInput.classList.add("tasks-list-item");
+          newInput.placeholder = "Enter a task";
+          document.querySelector("#tasks_list").appendChild(newInput);
+        });
+
+      document
+        .querySelector("#submit_tasks")
+        .addEventListener("click", function () {
+          const tasksListInputs = document.querySelectorAll(".tasks-list-item");
+          const tasksList = [];
+          tasksListInputs.forEach((input) => {
+            if (input.value) {
+              tasksList.push(input.value);
+              input.value = ""; // Clear the input field
+            }
+          });
+
+          fetch("/add_tasks", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ tasks_list: tasksList }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              document.querySelector("#add_message").innerHTML = data.message;
+              listTasks();
+            });
+        });
+
+      document
+        .querySelector("#remove_task_btn")
+        .addEventListener("click", function () {
+          const taskNumber = document.querySelector("#task_number").value;
+          fetch("/remove_task", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ task_number: taskNumber }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              document.querySelector("#remove_message").innerHTML =
+                data.message;
+              listTasks();
+            });
+        });
+
+      function listTasks() {
+        fetch("/list_tasks")
+          .then((response) => response.json())
+          .then((data) => {
+            const tasksListDisplay = document.querySelector(
+              "#tasks_list_display"
+            );
+            tasksListDisplay.innerHTML = "";
+            data.tasks.forEach((task, index) => {
+              const listItem = document.createElement("li");
+              listItem.textContent = `${index + 1}. ${task}`;
+              tasksListDisplay.appendChild(listItem);
+            });
+          });
+      }
+
+      listTasks();
+    </script>
+  </body>
+</html>
