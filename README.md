@@ -2,6 +2,9 @@
 
 Task Manager is a simple web application built with Flask that allows users to manage their tasks. Users can add new tasks, list all existing tasks, and remove a task. This application is a great starting point for beginners who want to learn Flask or hackathon colleagues who want to quickly build a simple application.
 
+## Live Project
+To see the live version of this project, go to: https://flask-taskmanagement-web-5000-cgsbeu3h51taq9hpjn5g.apps.hackathon.napptive.dev/
+
 ## Installation
 
 To use this application, first clone the repository to your local machine:
@@ -23,6 +26,8 @@ To run the application, execute the following command from the project directory
 
 The application will start running at `http://localhost:5000`. Navigate to this URL in your web browser to use the application.
 
+Note: This application uses the local storage of your browser, so you don't need to be worried about your privacy.
+
 ## How to use the application
 
 The home page of the application (`http://localhost:5000/`) displays a form to add new tasks. You can enter a task and click on "Add another task" to add more tasks. Once you have entered all the tasks you want to add, click on "Submit tasks" to add them to the task list.
@@ -39,17 +44,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Docker
 
-This project can be deployed as a Docker container. A Dockerfile is included in the project. To build the Docker image, navigate to the project directory and run the following command:
-
-`docker build -t <image-name>`
+For information on how to deploy this project as a Docker container, go to: https://hub.docker.com/repository/docker/muhammadnoorani/flask-taskmanagement/general
 
 
-To run the Docker container, execute the following command:
-
-`docker run -p 5000:5000 <image-name>
 
 
-Replace `<image-name>` with the name you want to give to the Docker image. Once the container is running, you can access the application at `http://localhost:5000`.
-
-Note: Make sure you have Docker installed on your machine before building and running the Docker container.
-`
