@@ -50,7 +50,8 @@
         .querySelector("#submit_tasks")
         .addEventListener("click", function () {
           const tasksListInputs = document.querySelectorAll(".tasks-list-item");
-          const tasksList = [];
+          const tasksList = JSON.parse(localStorage.getItem("tasks")) || [];
+
           tasksListInputs.forEach((input) => {
             if (input.value) {
               tasksList.push(input.value);
@@ -58,53 +59,32 @@
             }
           });
 
-          fetch("/add_tasks", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ tasks_list: tasksList }),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              document.querySelector("#add_message").innerHTML = data.message;
-              listTasks();
-            });
+          localStorage.setItem("tasks", JSON.stringify(tasksList));
+          listTasks();
         });
 
       document
         .querySelector("#remove_task_btn")
         .addEventListener("click", function () {
           const taskNumber = document.querySelector("#task_number").value;
-          fetch("/remove_task", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ task_number: taskNumber }),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              document.querySelector("#remove_message").innerHTML =
-                data.message;
-              listTasks();
-            });
+          const tasksList = JSON.parse(localStorage.getItem("tasks")) || [];
+
+          if (taskNumber && tasksList[taskNumber - 1]) {
+            tasksList.splice(taskNumber - 1, 1);
+            localStorage.setItem("tasks", JSON.stringify(tasksList));
+            listTasks();
+          }
         });
 
       function listTasks() {
-        fetch("/list_tasks")
-          .then((response) => response.json())
-          .then((data) => {
-            const tasksListDisplay = document.querySelector(
-              "#tasks_list_display"
-            );
-            tasksListDisplay.innerHTML = "";
-            data.tasks.forEach((task, index) => {
-              const listItem = document.createElement("li");
-              listItem.textContent = `${index + 1}. ${task}`;
-              tasksListDisplay.appendChild(listItem);
-            });
-          });
+        const tasksList = JSON.parse(localStorage.getItem("tasks")) || [];
+        const tasksListDisplay = document.querySelector("#tasks_list_display");
+        tasksListDisplay.innerHTML = "";
+        tasksList.forEach((task, index) => {
+          const listItem = document.createElement("li");
+          listItem.textContent = `${index + 1}. ${task}`;
+          tasksListDisplay.appendChild(listItem);
+        });
       }
 
       listTasks();
