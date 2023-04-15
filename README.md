@@ -16,6 +16,20 @@ Then, navigate to the project directory and install the required dependencies:
 `cd <repository-name>`
 `pip install -r requirements.txt`
 
+## Folder Structure
+
+Follow this folder structure to run this app locally:
+
+- myapp/
+  - app.py
+  - Dockerfile
+  - requirements.txt
+  - templates/
+    - index.html
+  - static/
+    - style.css
+
+
 
 ## Usage
 
