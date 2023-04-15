@@ -3,7 +3,7 @@
 Task Manager is a simple web application built with Flask that allows users to manage their tasks. Users can add new tasks, list all existing tasks, and remove a task. This application is a great starting point for beginners who want to learn Flask or hackathon colleagues who want to quickly build a simple application.
 
 ## Live Project
-To see the live version of this project, go to: https://flask-taskmanagement-web-5000-cgsbeu3h51taq9hpjn5g.apps.hackathon.napptive.dev/
+Deployed App URL - [Live Demo - Flask Task Management App](https://flask-taskmanagement-web-5000-cgsbeu3h51taq9hpjn5g.apps.hackathon.napptive.dev/)
 
 ## Installation
 
@@ -44,8 +44,9 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Docker
 
-For information on how to deploy this project as a Docker container, go to: https://hub.docker.com/repository/docker/muhammadnoorani/flask-taskmanagement/general
+For information on how to deploy this project as a Docker container, go to:
 
+Docker Hub Repository - [Docker Hub - Flask Task Management Image](https://hub.docker.com/repository/docker/muhammadnoorani/flask-taskmanagement/general)
 
 
 
