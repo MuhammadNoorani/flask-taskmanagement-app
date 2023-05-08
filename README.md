@@ -3,7 +3,7 @@
 Task Manager is a simple web application built with Flask that allows users to manage their tasks. Users can add new tasks, list all existing tasks, and remove a task. This application is a great starting point for beginners who want to learn Flask or hackathon colleagues who want to quickly build a simple application.
 
 ## Live Project
-Deployed App URL - [Live Demo - Flask Task Management App](https://flask-taskmanagement-web-5000-cgsbeu3h51taq9hpjn5g.apps.hackathon.napptive.dev/)
+Deployed App URL - [Live Demo - Flask Task Management App](https://flask-taskmanagement-web-5000-cgqsag5t998c97mful0g.apps.playground.napptive.dev/)
 
 ## Installation
 
